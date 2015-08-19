@@ -13,8 +13,9 @@ namespace MVC_Angular.Controllers
             return View();
         }
 
-        public ActionResult Two()
+        public ActionResult Two(int mvcParam = 1)
         {
+            ViewBag.Donuts = mvcParam;
             return View();
         }
 
