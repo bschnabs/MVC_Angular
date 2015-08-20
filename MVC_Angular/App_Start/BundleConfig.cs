@@ -14,6 +14,7 @@ namespace MVC_Angular
 
             bundles.Add(new ScriptBundle("~/bundles/MVC_Angular")
                 .IncludeDirectory("~/Scripts/Controllers", "*.js")
+                .IncludeDirectory("~/Scripts/Factories", "*.js")
                 .Include("~/Scripts/MVC_Angular.js"));
         }
     }
