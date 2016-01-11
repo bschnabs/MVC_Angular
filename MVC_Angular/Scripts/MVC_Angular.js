@@ -18,8 +18,8 @@ var configFunction = function ($routeProvider, $httpProvider)
                       templateUrl: 'routesDemo/three'
                   })
                   .when('/login', {
-                      templateUrl: 'routesDemo/one'
-                      //controller: LoginController
+                      templateUrl: 'account/Login',
+                      controller: LoginController
                   });
 
     $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
