@@ -2,15 +2,16 @@
 
 MVC_Angular.controller('LandingPageController', LandingPageController);
 MVC_Angular.controller('LoginController', LoginController);
+MVC_Angular.controller('RegisterController'), RegisterController);
 
 MVC_Angular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 
 var configFunction = function ($routeProvider, $httpProvider)
 {
     $routeProvider.when('/routeOne', {
-                      templateUrl: 'routesDemo/one',
-                      controller: LoginController  
-                  })
+        templateUrl: 'routesDemo/one',
+        controller: LoginController  
+    })
                   .when('/routeTwo/:thisIsJSParameter', {
                       templateUrl: function (params) { return '/routesDemo/two?mvcParam=' + params.thisIsJSParameter; }
                   })
@@ -20,6 +21,10 @@ var configFunction = function ($routeProvider, $httpProvider)
                   .when('/login', {
                       templateUrl: 'account/Login',
                       controller: LoginController
+                  })
+                  .when('/register', {
+                      templateUrl: 'account/register',
+                      controller: RegisterController
                   });
 
     $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
