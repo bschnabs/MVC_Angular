@@ -2,9 +2,10 @@
 
 MVC_Angular.controller('LandingPageController', LandingPageController);
 MVC_Angular.controller('LoginController', LoginController);
-MVC_Angular.controller('RegisterController'), RegisterController);
+MVC_Angular.controller('RegisterController', RegisterController);
 
 MVC_Angular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
+MVC_Angular.factory('LoginFactory', LoginFactory);
 
 var configFunction = function ($routeProvider, $httpProvider)
 {
