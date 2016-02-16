@@ -73,6 +73,5 @@ namespace MVC_Angular.Controllers
             await SignInManager.SignInAsync(user, false, false);
             return true;
         }
-           
     }
 }

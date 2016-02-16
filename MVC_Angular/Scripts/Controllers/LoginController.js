@@ -1,4 +1,4 @@
-﻿var LoginController = function($scope, $routeParams, $location, $LoginFactory)
+﻿var LoginController = function($scope, $routeParams, $location, LoginFactory)
 {
     $scope.loginForm =
     {
@@ -26,4 +26,4 @@
     }
 }
 
-LoginController.$inject = ['$scope', '$routeParams', '$location', '$LoginFactory'];
+LoginController.$inject = ['$scope', '$routeParams', '$location', 'LoginFactory'];
