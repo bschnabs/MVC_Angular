@@ -65,13 +65,16 @@ namespace MVC_Angular.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<bool> Register(RegisterViewModel model)
+        public async Task<string> Register(RegisterViewModel model)
         {
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
             var result = await UserManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded) return false;
+            if (!result.Succeeded)
+            {
+                return "False";
+            }
             await SignInManager.SignInAsync(user, false, false);
-            return true;
+            return "True";
         }
     }
 }

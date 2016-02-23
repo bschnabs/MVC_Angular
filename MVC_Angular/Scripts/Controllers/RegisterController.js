@@ -14,7 +14,7 @@
 
         result.then(function (result) {
             if (result.success)
-                $location.path('/routeOne');
+                $location.path('/routeThree');
             else
                 $scope.registerForm.registrationFailure = true;
         });
