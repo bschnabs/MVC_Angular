@@ -22,7 +22,7 @@ namespace MVC_Angular.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
-        }        
+        }
 
         public ApplicationUserManager UserManager
         {
@@ -70,9 +70,7 @@ namespace MVC_Angular.Controllers
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
             var result = await UserManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
-            {
                 return "False";
-            }
             await SignInManager.SignInAsync(user, false, false);
             return "True";
         }

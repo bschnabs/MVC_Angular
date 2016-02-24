@@ -10,10 +10,11 @@ MVC_Angular.factory('RegistrationFactory', RegistrationFactory);
 
 var configFunction = function ($routeProvider, $httpProvider)
 {
-    $routeProvider.when('/routeOne', {
-        templateUrl: 'routesDemo/one',
-        controller: LoginController  
-    })
+    $routeProvider
+                  .when('/routeOne', {
+                      templateUrl: 'routesDemo/one',
+                      controller: LoginController
+                  })
                   .when('/routeTwo/:thisIsJSParameter', {
                       templateUrl: function (params) { return '/routesDemo/two?mvcParam=' + params.thisIsJSParameter; }
                   })
@@ -27,6 +28,9 @@ var configFunction = function ($routeProvider, $httpProvider)
                   .when('/register', {
                       templateUrl: 'account/register',
                       controller: RegisterController
+                  }).
+                  when('/error', {
+                      templateUrl: 'error/error'
                   });
 
     $httpProvider.interceptors.push('AuthHttpResponseInterceptor');

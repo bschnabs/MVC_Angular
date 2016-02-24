@@ -1,4 +1,4 @@
-﻿var RegistrationFactory = function($http, $q) 
+﻿var RegistrationFactory = function($http, $q, $location) 
 {
     return function (emailAddress, password, confirmPassword)
     {
@@ -14,6 +14,10 @@
             success(function (data) {
                 if (data == "True")
                     deferredObject.resolve({ success: true });
+                else if(data == "False")
+                {
+                    $location.path('/error');
+                }
                 else
                     deferredObject.resolve({ success: false });
             }).
@@ -25,4 +29,4 @@
     }
 }
 
-RegistrationFactory.$inject = ['$http', '$q'];
+RegistrationFactory.$inject = ['$http', '$q', '$location'];
