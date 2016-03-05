@@ -1,4 +1,4 @@
-﻿var MVC_Angular = angular.module('MVC_Angular', ['ngRoute']);
+﻿var MVC_Angular = angular.module('MVC_Angular', ['ui.router', 'ui.bootstrap']);
 
 MVC_Angular.controller('LandingPageController', LandingPageController);
 MVC_Angular.controller('LoginController', LoginController);
@@ -8,34 +8,65 @@ MVC_Angular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 MVC_Angular.factory('LoginFactory', LoginFactory);
 MVC_Angular.factory('RegistrationFactory', RegistrationFactory);
 
-var configFunction = function ($routeProvider, $httpProvider)
+var configFunction = function ($stateProvider, $httpProvider, $locationProvider)
 {
-    $routeProvider
-                  .when('/routeOne', {
-                      templateUrl: 'routesDemo/one',
-                      controller: LoginController
-                  })
-                  .when('/routeTwo/:thisIsJSParameter', {
-                      templateUrl: function (params) { return '/routesDemo/two?mvcParam=' + params.thisIsJSParameter; }
-                  })
-                  .when('/routeThree', {
-                      templateUrl: 'routesDemo/three'
-                  })
-                  .when('/login', {
-                      templateUrl: 'account/Login',
-                      controller: LoginController
-                  })
-                  .when('/register', {
-                      templateUrl: 'account/register',
-                      controller: RegisterController
-                  }).
-                  when('/error', {
-                      templateUrl: 'error/error'
-                  });
+    $locationProvider.hashPrefix('!').html5Mode('true');
+
+    $stateProvider
+            .state('stateOne', {
+                url: '/stateOne?jsParam',
+                views: {
+                    "containerOne": {
+                        templateUrl: '/routesDemo/one'
+                    },
+                    "containerTwo": {
+                        templateUrl: function (params) { return '/routesDemo/two?mvcParam=' + params.jsParam; }
+                    }
+                }
+            })
+            .state('stateTwo', {
+                url: '/stateTwo',
+                views: {
+                    "containerOne": {
+                        templateUrl: '/routesDemo/one'
+                    },
+                    "containerTwo": {
+                        templateUrl: '/routesDemo/three'
+                    }
+                }
+            })
+            .state('stateThree', {
+                        url: '/stateThree?donuts',
+                        views: {
+                            "containerOne": {
+                                templateUrl: function (params) { return '/routesDemo/two?donuts=' + params.donuts; }
+                            },
+                            "containerTwo": {
+                                templateUrl: '/routesDemo/three'
+                            }
+                        }
+                    })
+            .state('loginRegister', {
+                url: '/loginRegister?returnUrl',
+                views: {
+                    "containerOne": {
+                        templateUrl: '/Account/Login',
+                        controller: LoginController
+                    },
+                    "containerTwo": {
+                        templateUrl: '/Account/Register',
+                        controller: RegisterController
+                    }
+                }
+            });
+
+                  //    when('/error', {
+                  //    templateUrl: 'error/error'
+                  //});
 
     $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
 }
 
-configFunction.$inject = ['$routeProvider', '$httpProvider'];
+configFunction.$inject = ['$stateProvider', '$httpProvider', '$locationProvider'];
 
 MVC_Angular.config(configFunction);
