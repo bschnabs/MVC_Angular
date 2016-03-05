@@ -24,5 +24,10 @@ namespace MVC_Angular.Controllers
         {
             return View();
         }
+
+        public ActionResult Four()
+        {
+            return View();
+        }
     }
 }

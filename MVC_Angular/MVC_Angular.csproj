@@ -246,6 +246,7 @@
     <Content Include="Views\RoutesDemo\Three.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\RoutesDemo\Four.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
